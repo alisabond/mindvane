@@ -1,0 +1,98 @@
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #ecf0f3;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Card Style */
+.login-card {
+    background: #ecf0f3;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 13px 13px 20px #cbced1,
+    -13px -13px 20px #ffffff;
+    width: 300px;
+    text-align: center;
+}
+
+/* Title */
+.title {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Input Group */
+.input-group {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    background: #ecf0f3;
+    box-shadow: inset 8px 8px 8px #cbced1,
+    inset -8px -8px 8px #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.icon {
+    color: #555;
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+/* Button */
+.btn {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background: #1da1f2;
+    color: white;
+    font-size: 1rem;
+    border-radius: 10px;
+    box-shadow: 3px 3px 8px #b1b1b1,
+    -3px -3px 8px #ffffff;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #0d8ddb;
+}
+
+/* Footer Links */
+.footer-links {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #1da1f2;
+}
