@@ -1,3 +1,4 @@
 # mindvane
-htmx 
-NodeJS
+# HTMX
+# Live Server
+# NodeJS
