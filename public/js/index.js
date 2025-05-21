@@ -1,4 +1,21 @@
-document.addEventListener("DOMContentLoaded", () => {
+function init() {
+    import('./header.js');
+    // Потом добавим сюда другие
+}
+
+const totalPartials = document.querySelectorAll('[hx-trigger="load"]').length;
+let loadedPartialsCount = 0;
+
+document.body.addEventListener('htmx:afterOnLoad', () => {
+    loadedPartialsCount++;
+    if (loadedPartialsCount === totalPartials) init();
+});
+
+
+document.body.addEventListener('htmx:afterOnLoad', init);
+
+
+/*document.addEventListener("DOMContentLoaded", () => {
     const themeSwitch = document.getElementById("theme-switch");
     const themeLabel = document.querySelector(".theme-toggle label");
 
@@ -18,4 +35,4 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("theme", isDarkMode ? "dark" : "light");
         });
     }
-});
+});*/

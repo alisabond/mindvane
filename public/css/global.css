@@ -1,0 +1,49 @@
+:root {
+    --bg-color: #e6e6ee;
+    --text-color: #333;
+    --primary-color: #f34a4a;
+    --input-bg: #e6e6ee;
+    --shadow-light: #ffffff;
+    --shadow-dark: #bebebe;
+}
+
+body.dark-theme {
+    --bg-color: #303030;
+    --text-color: #f0f0f0;
+    --input-bg: #303030;
+    --shadow-light: #2a2a2a;
+    --shadow-dark: #121212;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/**/
+
+/*.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.theme-toggle input[type="checkbox"] {
+    display: none;
+}
+
+.theme-toggle label {
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+}*/

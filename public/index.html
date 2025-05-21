@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+
+<header hx-get="components/header.html" hx-trigger="load" hx-target="this" hx-swap="outerHTML"></header>
+
+<main>
+    <h1>Wellcome</h1>
+    <p>You are logged in)</p>
+
+    <a href="auth.html">Go back to login</a>
+</main>
+
+<script src="js/htmx.min.js"></script>
+<script type="module" src="js/index.js"></script>
+</body>
+</html>

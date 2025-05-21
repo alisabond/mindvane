@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const registerBtn = document.getElementById("registerBtn");
     const loginForm = document.getElementById("loginForm");
     const registerForm = document.getElementById("registerForm");
-    const themeSwitch = document.getElementById("theme-switch");
-    const themeIcon = document.getElementById("theme-icon");
+    //const themeSwitch = document.getElementById("theme-switch");
+    //const themeIcon = document.querySelector("#theme-icon i");
 
     // form toggle
     loginBtn.addEventListener("click", () => {
@@ -23,11 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
         clearErrors();
     });
 
-    // switch themes
-    themeSwitch.addEventListener("change", () => {
-        document.body.classList.toggle("dark-theme");
-        themeIcon.textContent = document.body.classList.contains("dark-theme") ? "☀️" : "🌙";
-    });
+    // // switch themes
+    // themeSwitch.addEventListener("change", () => {
+    //     // document.body.classList.toggle("dark-theme");
+    //     // themeIcon.classList.toggle("fa-sun");
+    //     // themeIcon.classList.toggle("fa-moon");
+    //     const isDark = document.body.classList.toggle("dark-theme");
+    //     themeIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+    // });
 
     // validation login form
     loginForm.addEventListener("submit", (e) => {
