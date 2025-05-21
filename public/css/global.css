@@ -29,21 +29,3 @@ body {
     display: flex;
     flex-direction: column;
 }
-
-/**/
-
-/*.theme-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.theme-toggle input[type="checkbox"] {
-    display: none;
-}
-
-.theme-toggle label {
-    font-size: 24px;
-    cursor: pointer;
-    user-select: none;
-}*/

@@ -17,7 +17,6 @@
     width: 300px;
 }
 
-/* Выпуклый стиль по умолчанию */
 .theme-toggle,
 .avatar {
     display: flex;
@@ -30,7 +29,6 @@
     transition: all 0.3s ease;
 }
 
-/* Вдавленный эффект при наведении */
 .theme-toggle:hover,
 .avatar:hover,
 #avatar-icon:hover,
@@ -39,13 +37,11 @@
     inset -2px -2px 5px var(--shadow-light);
 }
 
-/* ОТМЕНА наведения, если меню открыто */
 .avatar.menu-open:hover {
     box-shadow: 5px 5px 10px var(--shadow-dark),
     -5px -5px 10px var(--shadow-light);
 }
 
-/* Скрыть input переключателя темы */
 #theme-switch {
     display: none;
 }
@@ -72,7 +68,6 @@
     display: none !important;
 }
 
-/* Меню */
 .avatar-menu {
     display: none;
     position: absolute;
@@ -104,7 +99,6 @@
     margin: 0.25rem 0;
 }
 
-/* Ссылки внутри меню — обычный стиль */
 .avatar-menu a {
     display: block;
     padding: 0.75rem 1rem;
@@ -120,7 +114,6 @@
     background: rgba(0, 0, 0, 0.05);
 }
 
-/* Logout — выпуклая кнопка */
 .avatar-menu button {
     display: block;
     width: 100%;
