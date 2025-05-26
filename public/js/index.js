@@ -1,5 +1,6 @@
 function init() {
     import('./header.js');
+    import('./footer.js');
 
 }
 
