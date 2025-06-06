@@ -2,34 +2,54 @@ require('dotenv').config({ path: '../.env' });
 const connectDB = require('./db');
 const express = require('express');
 const mongoose = require('mongoose');
+const session = require('express-session');
+const path = require('path');
+const requireAuth = require('./middleware/auth');
+const authRoutes = require('./routes/auth');
+const protectedRoutes = require('./routes/protected');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const path = require('path');
-const authRoutes = require('./routes/auth');
 
 connectDB();
 
 app.use(express.json());
 
-app.use(express.static('../public')); // return frontend
+// Middleware
+app.use(session({
+    secret: process.env.SESSION_SECRET,     // take secret in .env
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: false,                      // true only for HTTPS in production
+        maxAge: 1000 * 60 * 60 * 24         // 1 day
+    }
+}));
 
+app.use(express.static('../public')); // return frontend
 // Font Awesome:
 app.use('/fa', express.static(path.join(__dirname, '..', 'node_modules', '@fortawesome', 'fontawesome-free')));
-
-
-// //delete test
-// app.use((req, res, next) => {
-//     console.log('🧾 METHOD:', req.method);
-//     console.log('🧾 URL:', req.url);
-//     console.log('🧾 HEADERS:', req.headers);
-//     console.log('🧾 BODY:', req.body);
-//     next();
-// });
-
-app.use('/api/auth', authRoutes); // authentication
-
+// Routes:
+app.use('/api/auth', authRoutes);      // authentication
+app.use('/api', protectedRoutes);      // protected routes (example - /api/profile)
 app.get('/api/health', (req, res) => {
     res.json({ status: 'OK' });
+});
+
+// Test: set session value
+app.get('/api/session/set', (req, res) => {
+    req.session.testValue = 'Session is working!';
+    res.json({ message: 'Session value set' });
+});
+
+// Test: get session value
+app.get('/api/session/get', (req, res) => {
+    const value = req.session.testValue;
+    res.json({ sessionValue: value || 'No session value found' });
+});
+
+// Protected route
+app.get('/api/protected', requireAuth, (req, res) => {
+    res.json({ message: `Welcome! You are authenticated as user ${req.session.userId}` });
 });
 
 app.listen(PORT, () => {
