@@ -1,9 +1,11 @@
-require('dotenv').config({ path: '../.env' });
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+// Check if the environment variable is loaded
+console.log('MONGODB_URI:', process.env.MONGODB_URI);
 const connectDB = require('./db');
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
-const path = require('path');
 const requireAuth = require('./middleware/auth');
 const authRoutes = require('./routes/auth');
 const protectedRoutes = require('./routes/protected');
@@ -25,7 +27,8 @@ app.use(session({
     }
 }));
 
-app.use(express.static('../public')); // return frontend
+//app.use(express.static('../client')); // return frontend
+app.use(express.static(path.join(__dirname, '..', 'client'))); // return frontend
 // Font Awesome:
 app.use('/fa', express.static(path.join(__dirname, '..', 'node_modules', '@fortawesome', 'fontawesome-free')));
 // Routes:
@@ -33,6 +36,10 @@ app.use('/api/auth', authRoutes);      // authentication
 app.use('/api', protectedRoutes);      // protected routes (example - /api/profile)
 app.get('/api/health', (req, res) => {
     res.json({ status: 'OK' });
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
 });
 
 // Test: set session value

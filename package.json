@@ -1,7 +1,32 @@
 {
+  "name": "mindvane",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alisabond/mindvane.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
+    "htmx.org": "^2.0.4",
+    "bcrypt": "^6.0.0",
     "dotenv": "^16.5.0",
-    "htmx.org": "^2.0.4"
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
+
