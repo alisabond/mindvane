@@ -36,10 +36,15 @@ app.use('/api/auth', authRoutes);      // authentication
 app.use('/api', protectedRoutes);      // protected routes (example - /api/profile)
 app.get('/api/health', (req, res) => {
     res.json({ status: 'OK' });
+    res.json({ status: 'ok', userId: req.session.userId }); // test
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+    if(req.session.userId){
+        res.redirect('/index.html');
+    } else {
+        res.sendFile(path.join(__dirname, '..', 'client', 'auth.html'));
+    }
 });
 
 // Test: set session value

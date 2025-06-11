@@ -39,8 +39,28 @@ document.addEventListener("DOMContentLoaded", () => {
             isValid = false;
         }
 
+        // if form is valid - do POST
         if (isValid) {
-            window.location.href = "index.html";
+            fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({
+                    username: username.value,
+                    password: password.value
+                })
+            })
+                .then(async res => {
+                    if (res.ok) {
+                        window.location.href = 'index.html';
+                    } else {
+                        const { message } = await res.json();
+                        showError(password, message || 'Login failed.');
+                    }
+                })
+                .catch(() => {
+                    showError(password, 'Server error. Try again later.');
+                });
         }
     });
 
@@ -67,8 +87,30 @@ document.addEventListener("DOMContentLoaded", () => {
             isValid = false;
         }
 
+        // if form is valid - do POST
         if (isValid) {
-            window.location.href = "index.html";
+            fetch('/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({
+                    username: username.value,
+                    email: email.value,
+                    password: password.value
+                })
+            })
+                .then(async res => {
+                    if (res.ok) {
+                        alert('Registration successful! You can now log in.');
+                        loginBtn.click(); // form toggle
+                    } else {
+                        const { message } = await res.json();
+                        showError(password, message || 'Registration failed.');
+                    }
+                })
+                .catch(() => {
+                    showError(password, 'Server error. Try again later.');
+                });
         }
     });
 
