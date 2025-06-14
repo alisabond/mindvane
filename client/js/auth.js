@@ -1,3 +1,12 @@
+// check authorization
+fetch('/api/protected', { credentials: 'include' })
+    .then(res => {
+        if (res.ok) {
+            // Уже авторизован — перенаправить
+            window.location.href = 'index.html';
+        }
+    });
+
 document.addEventListener("DOMContentLoaded", () => {
     const loginBtn = document.getElementById("loginBtn");
     const registerBtn = document.getElementById("registerBtn");

@@ -3,6 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        document.documentElement.classList.add("dark-theme");
+      }
+    })();
+  </script>
+
   <title>Authorization</title>
   <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="css/auth.css" />

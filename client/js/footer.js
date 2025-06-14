@@ -1,4 +1,4 @@
-const logoutBtn = document.getElementById("logoutBtn");
+/*const logoutBtn = document.getElementById("logoutBtn");
 
 if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
@@ -16,4 +16,4 @@ if (logoutBtn) {
                 alert("Logout failed.");
             });
     });
-}
+}*/
