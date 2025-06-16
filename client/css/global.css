@@ -48,7 +48,7 @@ i[class*=" fa-"] {
     transition: text-shadow 0.4s ease, color 0.4s ease;
 }
 
-div:hover i[class^="fa"],
+/*div:hover i[class^="fa"],*/
 button:hover i[class^="fa"],
 button:hover i[class*=" fa-"],
 a:hover i[class^="fa"],
@@ -63,7 +63,7 @@ li:hover i[class*=" fa-"] {
     transition: text-shadow 0.4s ease, color 0.4s ease;
 }
 
-:root:not(.dark-theme) div:hover i[class^="fa"],
+/*:root:not(.dark-theme) div:hover i[class^="fa"],*/
 :root:not(.dark-theme) button:hover i[class^="fa"],
 :root:not(.dark-theme) button:hover i[class*=" fa-"],
 :root:not(.dark-theme) a:hover i[class^="fa"],

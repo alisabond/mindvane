@@ -2,7 +2,7 @@
   <ul class="menu">
     <li>
       <button hx-get="components/boards.html" hx-target="#content-container" hx-swap="innerHTML">
-        <i class="fas fa-tasks"></i>
+        <i class="fa-solid fa-bars-progress"></i>
         <span class="label">Boards</span>
       </button>
     </li>
@@ -19,4 +19,20 @@
       </button>
     </li>
   </ul>
+
+  <ul class="menu settings">
+    <li>
+      <button hx-get="components/profile.html" hx-target="#content-container" hx-swap="innerHTML">
+        <i class="fa-solid fa-circle-user"></i>
+        <span class="label">Profile</span>
+      </button>
+    </li>
+    <li>
+      <button id="logoutBtn">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span class="label">Logout</span>
+      </button>
+    </li>
+  </ul>
+
 </aside>

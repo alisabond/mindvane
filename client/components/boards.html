@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Boards</title>
-</head>
-<body>
-Boards
-</body>
-</html>
+<section class="boards-section">
+    <h2>All Boards:</h2>
+
+    <div class="boards-layout">
+        <div class="boards-list">
+            <!-- If Boards -->
+
+            <!-- If No Boards -->
+            <div class="empty-state">
+                <p>You Have No Boards Yet... Let's Create It!</p>
+                <img src="../assets/icons/atom.svg" alt="Atom">
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="boards-controls">
+            <button id="create-board">
+                <i class="fas fa-plus-circle"></i>
+                Create New Board
+            </button>
+            <button id="save-board" disabled>
+                <i class="fas fa-save"></i>
+                Save
+            </button>
+            <button id="close-board" disabled>
+                <i class="fas fa-times-circle"></i>
+                Close
+            </button>
+        </div>
+    </div>
+
+</section>

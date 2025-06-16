@@ -18,6 +18,26 @@ function initSidebarMenu(skipRestore = false) {
         });
     });
 
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            fetch("/api/auth/logout", {
+                method: "POST",
+                credentials: "include"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    alert("You are logged out.");
+                    window.location.href = "auth.html";
+                })
+                .catch(err => {
+                    console.error("Logout error:", err);
+                    alert("Logout failed.");
+                });
+        });
+    }
+
     // Восстанавливаем активный пункт при загрузке страницы (только один раз)
     if (!skipRestore) {
         const savedIndex = localStorage.getItem('activeSidebarIndex');
@@ -45,3 +65,4 @@ const observer = new MutationObserver(() => {
 });
 
 observer.observe(document.body, { childList: true, subtree: true });
+

@@ -9,6 +9,7 @@ const session = require('express-session');
 const requireAuth = require('./middleware/auth');
 const authRoutes = require('./routes/auth');
 const protectedRoutes = require('./routes/protected');
+const boardsRoutes = require('./routes/boards');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -87,6 +88,8 @@ app.get('/api/session/get', (req, res) => {
 app.get('/api/protected', requireAuth, (req, res) => {
     res.json({ message: `Welcome! You are authenticated as user ${req.session.userId}` });
 });
+
+app.use('/api/boards', boardsRoutes);
 
 // 404
 app.use((req, res, next) => {

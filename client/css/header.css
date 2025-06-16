@@ -30,21 +30,28 @@ header {
     background: var(--bg-color);
     box-shadow: 5px 5px 15px var(--shadow-dark),
     -5px -5px 15px var(--shadow-light);
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .logo {
     margin-right: auto;
+    display: flex;
+    align-items: center;
 }
 
 .logo img {
     width: 300px;
+    height: auto;
+    object-fit: contain;
+    transition: width 0.3s ease;
 }
 
 .theme-toggle,
 .avatar {
     display: flex;
     align-items: center;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     border-radius: 50%;
     background: var(--bg-color);
     box-shadow: 5px 5px 10px var(--shadow-dark),
@@ -156,4 +163,23 @@ header {
 .avatar-menu button:hover {
     box-shadow: inset 2px 2px 5px var(--shadow-dark),
     inset -2px -2px 5px var(--shadow-light);
+}
+
+/* Адаптивность логотипа и поведения top-bar */
+@media (max-width: 1024px) {
+    .logo img {
+        width: 200px;
+    }
+}
+
+@media (max-width: 600px) {
+    .logo img {
+        width: 230px;
+    }
+}
+
+@media (max-width: 470px) {
+    .avatar {
+        display: none;
+    }
 }

@@ -1,0 +1,240 @@
+.boards-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.boards-title {
+    font-size: 2rem;
+    text-align: center;
+    color: var(--text-color);
+}
+
+/* If No Boards */
+.empty-state {
+    text-align: center;
+    margin: auto;
+    padding: 2rem;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-state img {
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 1.5rem auto 0;
+    animation: spin 4s linear infinite;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 4px var(--icon-glow-color));
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Layout container */
+.boards-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Boards container */
+.boards-list {
+    flex: 1;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Board card */
+.board-card {
+    background: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 15px var(--shadow-dark),
+    -5px -5px 15px var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.board-card:hover {
+    transform: scale(1.03);
+}
+
+.board-name {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+/* Card actions */
+.board-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.board-actions button {
+    all: unset;
+    background: var(--bg-color);
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 5px 5px 10px var(--shadow-dark),
+    -5px -5px 10px var(--shadow-light);
+}
+
+.board-actions button:hover {
+    box-shadow: inset 2px 2px 5px var(--shadow-dark),
+    inset -2px -2px 5px var(--shadow-light);
+}
+
+.board-actions i {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* Controls */
+.boards-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+
+.boards-controls button {
+    all: unset;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+    box-shadow: 5px 5px 10px var(--shadow-dark),
+    -5px -5px 10px var(--shadow-light);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.boards-controls button:hover:not(:disabled) {
+    box-shadow: inset 2px 2px 5px var(--shadow-dark),
+    inset -2px -2px 5px var(--shadow-light);
+}
+
+.boards-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-overlay.hide {
+    display: none;
+}
+
+.modal {
+    background: var(--bg-color);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 15px var(--shadow-dark),
+    -5px -5px 15px var(--shadow-light);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal h2 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.modal input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.75rem;
+    background: var(--input-bg);
+    color: var(--text-color);
+    box-shadow: inset 3px 3px 6px var(--shadow-dark),
+    inset -3px -3px 6px var(--shadow-light);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.modal-buttons button {
+    all: unset;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+    box-shadow: 5px 5px 10px var(--shadow-dark),
+    -5px -5px 10px var(--shadow-light);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.modal-buttons button:hover {
+    box-shadow: inset 2px 2px 5px var(--shadow-dark),
+    inset -2px -2px 5px var(--shadow-light);
+}
+
+@media (max-width: 768px) {
+    .boards-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .boards-controls {
+        width: 100%;
+        align-items: center;
+    }
+
+    .boards-controls button {
+        width: 100%;
+    }
+
+    .boards-list {
+        width: 100%;
+    }
+}
