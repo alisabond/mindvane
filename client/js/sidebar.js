@@ -1,37 +1,47 @@
-function initSidebarMenu() {
+function initSidebarMenu(skipRestore = false) {
     const menuButtons = document.querySelectorAll('.sidebar .menu li button');
     if (!menuButtons.length) return;
 
+    // Назначаем обработчики кликов
     menuButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
-            // Удалить активный класс у всех
+            // Удаляем активный класс у всех пунктов
             document.querySelectorAll('.sidebar .menu li').forEach(li => {
                 li.classList.remove('active');
             });
 
-            // Добавить активный класс текущему
+            // Добавляем активный класс текущему
             button.parentElement.classList.add('active');
 
-            // Сохранить выбранный пункт
+            // Сохраняем индекс активного пункта в localStorage
             localStorage.setItem('activeSidebarIndex', index);
         });
     });
 
-    // Программный клик по сохранённому пункту
-    const savedIndex = localStorage.getItem('activeSidebarIndex');
-    if (savedIndex !== null && menuButtons[savedIndex]) {
-        menuButtons[savedIndex].click();
+    // Восстанавливаем активный пункт при загрузке страницы (только один раз)
+    if (!skipRestore) {
+        const savedIndex = localStorage.getItem('activeSidebarIndex');
+        if (savedIndex !== null && menuButtons[savedIndex]) {
+            const targetButton = menuButtons[savedIndex];
+            targetButton.parentElement.classList.add('active');
+
+            // Программно вызываем клик один раз, с задержкой для избежания гонки загрузки
+            setTimeout(() => {
+                targetButton.dispatchEvent(new Event('click'));
+            }, 50);
+        }
     }
 }
 
-// Инициализировать сразу, если sidebar уже загружен
+// Инициализируем сразу, если sidebar уже загружен
 initSidebarMenu();
 
-// Инициализировать при подгрузке sidebar
+// Смотрим на изменения DOM, чтобы повторно назначить события, но не запускать загрузку снова
 const observer = new MutationObserver(() => {
     const sidebar = document.querySelector('.sidebar');
     if (sidebar) {
-        initSidebarMenu();
+        initSidebarMenu(true); // true — не загружать контент повторно
     }
 });
+
 observer.observe(document.body, { childList: true, subtree: true });
