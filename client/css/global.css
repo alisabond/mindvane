@@ -5,6 +5,7 @@
     --input-bg: #e6e6ee;
     --shadow-light: #ffffff;
     --shadow-dark: #bebebe;
+    --icon-glow-color: var(--primary-color);
 }
 
 :root.dark-theme {
@@ -13,6 +14,7 @@
     --input-bg: #303030;
     --shadow-light: #2a2a2a;
     --shadow-dark: #121212;
+    --icon-glow-color: rgba(255, 255, 255, 0.6);
 }
 
 * {
@@ -38,5 +40,42 @@ main {
 
 a {
     text-decoration: none;
+}
+
+/* icon glow */
+i[class^="fa"],
+i[class*=" fa-"] {
+    transition: text-shadow 0.4s ease, color 0.4s ease;
+}
+
+div:hover i[class^="fa"],
+button:hover i[class^="fa"],
+button:hover i[class*=" fa-"],
+a:hover i[class^="fa"],
+a:hover i[class*=" fa-"],
+li:hover i[class^="fa"],
+li:hover i[class*=" fa-"] {
+    color: inherit;
+    text-shadow:
+            0 0 5px var(--icon-glow-color, rgba(255, 255, 255, 0.6)),
+            0 0 10px var(--icon-glow-color, rgba(255, 255, 255, 0.4)),
+            0 0 15px var(--icon-glow-color, rgba(255, 255, 255, 0.3));
+    transition: text-shadow 0.4s ease, color 0.4s ease;
+}
+
+:root:not(.dark-theme) div:hover i[class^="fa"],
+:root:not(.dark-theme) button:hover i[class^="fa"],
+:root:not(.dark-theme) button:hover i[class*=" fa-"],
+:root:not(.dark-theme) a:hover i[class^="fa"],
+:root:not(.dark-theme) a:hover i[class*=" fa-"],
+:root:not(.dark-theme) li:hover i[class^="fa"],
+:root:not(.dark-theme) li:hover i[class*=" fa-"] {
+    color: inherit;
+    text-shadow: 0 0 2px var(--icon-glow-color), 0 0 4px var(--icon-glow-color);
+    transition: text-shadow 0.4s ease, color 0.4s ease;
+    /*text-shadow:
+            0 0 1px var(--icon-glow-color, #f34a4a),
+            0 0 2px var(--icon-glow-color, #f34a4a),
+            0 0 3px var(--icon-glow-color, #f34a4a);*/
 }
 

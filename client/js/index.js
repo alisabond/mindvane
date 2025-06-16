@@ -1,5 +1,6 @@
 function init() {
     import('./header.js');
+    import('./sidebar.js');
     import('./footer.js');
 }
 
@@ -10,6 +11,6 @@ document.body.addEventListener('htmx:afterOnLoad', () => {
     loadedPartialsCount++;
 
     if (loadedPartialsCount === totalPartials) {
-        init(); // Инициализируем скрипты
+        init();
     }
 });

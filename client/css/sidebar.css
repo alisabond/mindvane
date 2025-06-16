@@ -1,0 +1,92 @@
+.sidebar {
+    position: fixed;
+    top: 88px;
+    left: 0;
+    width: 60px;
+    height: calc(100% - 88px);
+    background: var(--bg-color);
+    box-shadow: 5px 5px 15px var(--shadow-dark),
+    -5px -5px 15px var(--shadow-light);
+    transition: width 0.3s ease;
+    overflow-x: hidden;
+    z-index: 1000;
+    border-radius: 0 1rem 1rem 0;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    display: flex;
+}
+
+.menu button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    border-radius: 0.75rem;
+    background: var(--bg-color);
+    box-shadow: 5px 5px 10px var(--shadow-dark),
+    -5px -5px 10px var(--shadow-light);
+}
+
+.menu button:hover {
+    box-shadow: inset 2px 2px 5px var(--shadow-dark),
+    inset -2px -2px 5px var(--shadow-light);
+}
+
+.menu i {
+    min-width: 20px;
+    font-size: 1.2rem;
+}
+
+.menu .label {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.sidebar:hover .label {
+    opacity: 1;
+}
+
+/* Icons glow */
+.sidebar .menu li.active button {
+    /*background: var(--shadow-light);*/
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+.sidebar .menu li.active button i {
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.sidebar .menu li button i {
+    transition: text-shadow 0.4s ease, color 0.4s ease;
+}
+
+:root:not(.dark-theme) .sidebar .menu li.active button i {
+    text-shadow:
+            0 0 2px var(--icon-glow-color, var(--primary-color)),
+            0 0 4px var(--icon-glow-color, var(--primary-color));
+}
+
+:root.dark-theme .sidebar .menu li.active button i {
+    text-shadow:
+            0 0 5px var(--icon-glow-color, rgba(255, 255, 255, 0.6)),
+            0 0 10px var(--icon-glow-color, rgba(255, 255, 255, 0.4)),
+            0 0 15px var(--icon-glow-color, rgba(255, 255, 255, 0.3));
+}
+
