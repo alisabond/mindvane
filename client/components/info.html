@@ -1,0 +1,130 @@
+<div class="info-page">
+    <div class="page-header">
+        <h1 class="page-title">
+            <i class="fas fa-chart-line"></i>
+            Info Dashboard
+        </h1>
+        <p class="page-subtitle">Weather, Currency & Radio</p>
+    </div>
+
+    <div class="widgets-grid">
+        <!-- Weather Widget -->
+        <div class="widget weather-widget">
+            <div class="widget-header">
+                <i class="fas fa-cloud-sun"></i>
+                <h3>Weather</h3>
+                <button class="refresh-btn" id="refresh-weather">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            <div class="widget-content" id="weather-content">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    Loading weather...
+                </div>
+            </div>
+        </div>
+
+        <!-- Currency Widget -->
+        <div class="widget currency-widget">
+            <div class="widget-header">
+                <i class="fas fa-coins"></i>
+                <h3>Currency Rates</h3>
+                <button class="refresh-btn" id="refresh-currency">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            <div class="widget-content" id="currency-content">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    Loading rates...
+                </div>
+            </div>
+        </div>
+
+        <!-- Radio Widget -->
+        <div class="widget radio-widget">
+            <div class="widget-header">
+                <i class="fas fa-radio"></i>
+                <h3>Online Radio</h3>
+                <div class="radio-controls">
+                    <button class="radio-btn" id="play-pause-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="radio-btn" id="volume-btn">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="widget-content" id="radio-content">
+                <div class="radio-station-info">
+                    <div class="station-name" id="current-station">Select a station</div>
+                    <div class="now-playing" id="now-playing">Ready to play</div>
+                </div>
+                <div class="radio-stations">
+                    <button class="station-btn" data-url="https://stream.zeno.fm/f3wvbbqmdg8uv" data-name="Lofi Hip Hop">
+                        Lofi Hip Hop
+                    </button>
+                    <button class="station-btn" data-url="https://ice1.somafm.com/defcon-256-mp3" data-name="SomaFM DEF CON">
+                        SomaFM DEF CON
+                    </button>
+                    <button class="station-btn" data-url="https://ice1.somafm.com/groovesalad-256-mp3" data-name="SomaFM Groove">
+                        SomaFM Groove
+                    </button>
+                </div>
+                <div class="volume-control">
+                    <i class="fas fa-volume-down"></i>
+                    <input type="range" id="volume-slider" min="0" max="100" value="50">
+                    <i class="fas fa-volume-up"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Time & Date Widget -->
+        <div class="widget time-widget">
+            <div class="widget-header">
+                <i class="fas fa-clock"></i>
+                <h3>Time & Date</h3>
+            </div>
+            <div class="widget-content" id="time-content">
+                <div class="current-time" id="current-time">00:00:00</div>
+                <div class="current-date" id="current-date">Loading...</div>
+                <div class="timezone" id="timezone">UTC</div>
+            </div>
+        </div>
+
+        <!-- News Widget -->
+        <div class="widget news-widget">
+            <div class="widget-header">
+                <i class="fas fa-newspaper"></i>
+                <h3>Latest News</h3>
+                <button class="refresh-btn" id="refresh-news">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            <div class="widget-content" id="news-content">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    Loading news...
+                </div>
+            </div>
+        </div>
+
+        <!-- Random Quote Widget -->
+        <div class="widget quote-widget">
+            <div class="widget-header">
+                <i class="fas fa-quote-left"></i>
+                <h3>Quote of the Day</h3>
+                <button class="refresh-btn" id="refresh-quote">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            <div class="widget-content" id="quote-content">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    Loading quote...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

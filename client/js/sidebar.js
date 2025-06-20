@@ -1,27 +1,31 @@
+// protects against logout reinitialization
+let logoutInitialized = false;
+
 function initSidebarMenu(skipRestore = false) {
     const menuButtons = document.querySelectorAll('.sidebar .menu li button');
     if (!menuButtons.length) return;
 
-    // Назначаем обработчики кликов
+    // Assign click handlers to menu items
     menuButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
-            // Удаляем активный класс у всех пунктов
-            document.querySelectorAll('.sidebar .menu li').forEach(li => {
-                li.classList.remove('active');
-            });
-
-            // Добавляем активный класс текущему
+            if(button.id === 'logoutBtn') return;
+            document.querySelectorAll('.sidebar .menu li').forEach(li => li.classList.remove('active'));
             button.parentElement.classList.add('active');
-
-            // Сохраняем индекс активного пункта в localStorage
             localStorage.setItem('activeSidebarIndex', index);
         });
     });
 
-    const logoutBtn = document.getElementById("logoutBtn");
-    if (logoutBtn) {
-        logoutBtn.addEventListener("click", (e) => {
+    // Assign logout only once
+    if (!logoutInitialized) {
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('#logoutBtn');
+            if (!btn) return;
+
             e.preventDefault();
+
+            // Delete the saved tab
+            // localStorage.removeItem('activeSidebarIndex');
+
             fetch("/api/auth/logout", {
                 method: "POST",
                 credentials: "include"
@@ -36,16 +40,19 @@ function initSidebarMenu(skipRestore = false) {
                     alert("Logout failed.");
                 });
         });
+
+        logoutInitialized = true;
     }
 
-    // Восстанавливаем активный пункт при загрузке страницы (только один раз)
+    // Restore the active menu item during loading
     if (!skipRestore) {
         const savedIndex = localStorage.getItem('activeSidebarIndex');
+
         if (savedIndex !== null && menuButtons[savedIndex]) {
             const targetButton = menuButtons[savedIndex];
             targetButton.parentElement.classList.add('active');
 
-            // Программно вызываем клик один раз, с задержкой для избежания гонки загрузки
+            // click to open previous active tab
             setTimeout(() => {
                 targetButton.dispatchEvent(new Event('click'));
             }, 50);
@@ -53,16 +60,14 @@ function initSidebarMenu(skipRestore = false) {
     }
 }
 
-// Инициализируем сразу, если sidebar уже загружен
 initSidebarMenu();
 
-// Смотрим на изменения DOM, чтобы повторно назначить события, но не запускать загрузку снова
+// Looking at DOM changes
 const observer = new MutationObserver(() => {
     const sidebar = document.querySelector('.sidebar');
     if (sidebar) {
-        initSidebarMenu(true); // true — не загружать контент повторно
+        initSidebarMenu(true); // Do not download content again
     }
 });
 
 observer.observe(document.body, { childList: true, subtree: true });
-

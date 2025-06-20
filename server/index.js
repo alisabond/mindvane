@@ -29,15 +29,6 @@ app.use(session({
     }
 }));
 
-/*// without preloader
-app.get('/', (req, res) => {
-    if(req.session.userId){
-        res.redirect('/index.html');
-    } else {
-        res.sendFile(path.join(__dirname, '..', 'client', 'auth.html'));
-    }
-});*/
-// with preloader, start page logic in client/js/loader.js
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'client', 'preloader.html'));
 });

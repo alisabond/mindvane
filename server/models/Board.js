@@ -9,10 +9,15 @@ const BoardSchema = new mongoose.Schema({
     },
     tasks: [
         {
-            title: { type: String, required: true, trim: true },
-            description: { type: String, default: '' },
-            column: { type: String, enum: ['todo', 'inprogress', 'done'], default: 'todo' },
-            createdAt: { type: Date, default: Date.now }
+            title: { type: String, required: true },
+            description: String,
+            boardId: { type: mongoose.Schema.Types.ObjectId, ref: 'Board', required: true },
+            estimates: String,
+            count: Number,
+            createdAt: { type: Date, default: Date.now },
+            priority: { type: String, enum: ['low', 'medium', 'high'], default: 'medium' },
+            status: { type: String, enum: ['To Do', 'In Progress', 'Done'], default: 'To Do' },
+            // image: String
         }
     ],
     createdAt: {

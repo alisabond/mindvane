@@ -1,4 +1,3 @@
-// Инициализация фона с частицами
 function initParticles(containerId, config) {
     const canvas = document.createElement('canvas');
     canvas.className = 'pg-canvas';
@@ -31,14 +30,12 @@ function initParticles(containerId, config) {
         ctx.strokeStyle = config.lineColor;
         ctx.lineWidth = config.lineWidth;
 
-        // Рисуем точки
         for (const p of particles) {
             ctx.beginPath();
             ctx.arc(p.x, p.y, config.particleRadius, 0, 2 * Math.PI);
             ctx.fill();
         }
 
-        // Рисуем линии между близкими точками
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
@@ -53,7 +50,6 @@ function initParticles(containerId, config) {
             }
         }
 
-        // Обновляем координаты
         for (const p of particles) {
             p.x += p.vx;
             p.y += p.vy;
@@ -68,7 +64,6 @@ function initParticles(containerId, config) {
     draw();
 }
 
-// Настройки для фоновых частиц
 initParticles('particles-background', {
     dotColor: 'rgba(200,200,200,0.3)',
     lineColor: 'rgba(200,0,0,0.05)',
@@ -82,7 +77,6 @@ initParticles('particles-background', {
     proximity: 50,
 });
 
-// Настройки для переднего плана
 initParticles('particles-foreground', {
     dotColor: 'rgba(255,255,255,0.4)',
     lineColor: 'rgba(255,0,0,0.1)',
@@ -96,19 +90,19 @@ initParticles('particles-foreground', {
     proximity: 100,
 });
 
-// ✅ Проверка авторизации и редирект
+// Checking authorization and redirect
 fetch('/api/protected', {
     method: 'GET',
     credentials: 'include'
 })
     .then(response => {
-        console.log('Ответ от /api/protected:', response.status);
+        console.log('Answer from /api/protected:', response.status);
         setTimeout(() => {
             window.location.href = response.ok ? 'index.html' : 'auth.html';
         }, 6000);
     })
     .catch(error => {
-        console.error('Ошибка запроса:', error);
+        console.error('Request error:', error);
         setTimeout(() => {
             window.location.href = 'auth.html';
         }, 6000);

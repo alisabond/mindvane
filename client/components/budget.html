@@ -1,0 +1,195 @@
+<div class="budget-page">
+  <div class="page-header">
+    <h1 class="page-title">
+      <i class="fas fa-calculator"></i>
+      Budget Calculator
+    </h1>
+    <p class="page-subtitle">Project Cost & Personal Finance</p>
+  </div>
+
+  <div class="calculators-grid">
+    <!-- Project Cost Calculator -->
+    <div class="calculator project-calculator">
+      <div class="calculator-header">
+        <i class="fas fa-project-diagram"></i>
+        <h2>Project Cost Calculator</h2>
+      </div>
+
+      <div class="calculator-content">
+        <div class="input-group">
+          <label for="project-type">Project Type:</label>
+          <select id="project-type">
+            <option value="">Select project type</option>
+            <option value="website" data-rate="50">Website Development</option>
+            <option value="mobile" data-rate="60">Mobile App</option>
+            <option value="design" data-rate="40">UI/UX Design</option>
+            <option value="backend" data-rate="70">Backend Development</option>
+            <option value="fullstack" data-rate="80">Full Stack Development</option>
+            <option value="consulting" data-rate="100">IT Consulting</option>
+            <option value="custom" data-rate="0">Custom Rate</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="hourly-rate">Hourly Rate ($):</label>
+          <input type="number" id="hourly-rate" placeholder="Enter hourly rate" min="0" step="0.01">
+        </div>
+
+        <div class="input-group">
+          <label for="project-hours">Estimated Hours:</label>
+          <input type="number" id="project-hours" placeholder="Enter estimated hours" min="0" step="0.5">
+        </div>
+
+        <div class="input-group">
+          <label for="complexity-multiplier">Complexity:</label>
+          <select id="complexity-multiplier">
+            <option value="0.8">Simple (20% discount)</option>
+            <option value="1" selected>Standard</option>
+            <option value="1.2">Complex (20% markup)</option>
+            <option value="1.5">Very Complex (50% markup)</option>
+          </select>
+        </div>
+
+        <div class="calculation-section">
+          <button id="calculate-project" class="calc-button">
+            <i class="fas fa-calculator"></i>
+            Calculate Project Cost
+          </button>
+
+          <div class="result-card" id="project-result">
+            <div class="result-item">
+              <span class="result-label">Base Cost:</span>
+              <span class="result-value" id="base-cost">$0.00</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Complexity Adjustment:</span>
+              <span class="result-value" id="complexity-adjustment">$0.00</span>
+            </div>
+            <div class="result-item total">
+              <span class="result-label">Total Project Cost:</span>
+              <span class="result-value" id="total-project-cost">$0.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personal Finance Calculator -->
+    <div class="calculator finance-calculator">
+      <div class="calculator-header">
+        <i class="fas fa-wallet"></i>
+        <h2>Monthly Finance Calculator</h2>
+      </div>
+
+      <div class="calculator-content">
+        <div class="input-section">
+          <h3><i class="fas fa-money-bill-wave"></i> Income</h3>
+          <div class="input-group">
+            <label for="monthly-salary">Monthly Salary ($):</label>
+            <input type="number" id="monthly-salary" placeholder="Enter monthly salary" min="0" step="0.01">
+          </div>
+          <div class="input-group">
+            <label for="additional-income">Additional Income ($):</label>
+            <input type="number" id="additional-income" placeholder="Freelance, bonuses, etc." min="0" step="0.01">
+          </div>
+        </div>
+
+        <div class="input-section">
+          <h3><i class="fas fa-receipt"></i> Expenses</h3>
+          <div class="input-group">
+            <label for="housing-cost">Housing (Rent/Mortgage) ($):</label>
+            <input type="number" id="housing-cost" placeholder="Enter housing cost" min="0" step="0.01">
+          </div>
+          <div class="input-group">
+            <label for="food-cost">Food & Groceries ($):</label>
+            <input type="number" id="food-cost" placeholder="Enter food expenses" min="0" step="0.01">
+          </div>
+          <div class="input-group">
+            <label for="transport-cost">Transportation ($):</label>
+            <input type="number" id="transport-cost" placeholder="Car, public transport, etc." min="0" step="0.01">
+          </div>
+          <div class="input-group">
+            <label for="utilities-cost">Utilities ($):</label>
+            <input type="number" id="utilities-cost" placeholder="Electricity, water, internet, etc." min="0" step="0.01">
+          </div>
+          <div class="input-group">
+            <label for="other-expenses">Other Expenses ($):</label>
+            <input type="number" id="other-expenses" placeholder="Entertainment, shopping, etc." min="0" step="0.01">
+          </div>
+        </div>
+
+        <div class="input-section">
+          <h3><i class="fas fa-piggy-bank"></i> Savings Goal</h3>
+          <div class="input-group">
+            <label for="savings-percentage">Savings Goal (%):</label>
+            <input type="number" id="savings-percentage" placeholder="Recommended: 20%" min="0" max="100" step="1" value="20">
+          </div>
+        </div>
+
+        <div class="calculation-section">
+          <button id="calculate-finance" class="calc-button">
+            <i class="fas fa-chart-pie"></i>
+            Calculate Budget
+          </button>
+
+          <div class="result-card" id="finance-result">
+            <div class="budget-summary">
+              <div class="summary-item income">
+                <span class="summary-label">Total Income</span>
+                <span class="summary-value" id="total-income">$0.00</span>
+              </div>
+              <div class="summary-item expenses">
+                <span class="summary-label">Total Expenses</span>
+                <span class="summary-value" id="total-expenses">$0.00</span>
+              </div>
+              <div class="summary-item savings">
+                <span class="summary-label">Target Savings</span>
+                <span class="summary-value" id="target-savings">$0.00</span>
+              </div>
+              <div class="summary-item remaining">
+                <span class="summary-label">Remaining</span>
+                <span class="summary-value" id="remaining-amount">$0.00</span>
+              </div>
+            </div>
+
+            <div class="budget-breakdown">
+              <h4>Budget Breakdown</h4>
+              <div class="expense-item">
+                <span>Housing</span>
+                <span id="housing-percentage">0%</span>
+              </div>
+              <div class="expense-item">
+                <span>Food</span>
+                <span id="food-percentage">0%</span>
+              </div>
+              <div class="expense-item">
+                <span>Transportation</span>
+                <span id="transport-percentage">0%</span>
+              </div>
+              <div class="expense-item">
+                <span>Utilities</span>
+                <span id="utilities-percentage">0%</span>
+              </div>
+              <div class="expense-item">
+                <span>Other</span>
+                <span id="other-percentage">0%</span>
+              </div>
+            </div>
+
+            <div class="financial-advice" id="financial-advice">
+              <!-- Advice will be generated here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reset Button -->
+  <div class="page-actions">
+    <button id="reset-all" class="reset-button">
+      <i class="fas fa-undo"></i>
+      Reset All Calculators
+    </button>
+  </div>
+</div>

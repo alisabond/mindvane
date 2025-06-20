@@ -1,0 +1,69 @@
+.task-card {
+    background: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2), -8px -8px 16px rgba(255, 255, 255, 0.3);
+    margin: 10px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.task-card:hover {
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.4);
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.task-priority {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.task-priority.high {
+    background-color: red;
+}
+
+.task-priority.medium {
+    background-color: orange;
+}
+
+.task-priority.low {
+    background-color: green;
+}
+
+.task-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 10px;
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1), inset -4px -4px 8px rgba(255, 255, 255, 0.2);
+}
+
+.task-controls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.task-delete-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.task-delete-btn:hover {
+    color: red;
+}

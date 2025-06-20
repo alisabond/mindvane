@@ -1,0 +1,421 @@
+:root {
+    --bg-color: #e0e5ec;
+    --text-color: #4a5568;
+    --shadow-light: #ffffff;
+    --shadow-dark: #a3b1c6;
+    --accent-color: #667eea;
+    --success-color: #48bb78;
+    --warning-color: #ed8936;
+    --error-color: #f56565;
+    --input-bg: #e0e5ec;
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --success-gradient: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    --warning-gradient: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.budget-page {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-title i {
+    color: var(--accent-color);
+    filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.3));
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.7;
+    font-weight: 400;
+}
+
+.calculators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.calculator {
+    background: var(--bg-color);
+    border-radius: 2rem;
+    padding: 2rem;
+    box-shadow: 12px 12px 24px var(--shadow-dark),
+    -12px -12px 24px var(--shadow-light);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.calculator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary-gradient);
+}
+
+.calculator:hover {
+    transform: translateY(-2px);
+    box-shadow: 16px 16px 32px var(--shadow-dark),
+    -16px -16px 32px var(--shadow-light);
+}
+
+.calculator-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(163, 177, 198, 0.2);
+}
+
+.calculator-header i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.calculator-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.project-calculator::before {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.finance-calculator::before {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    box-shadow: inset 2px 2px 4px var(--shadow-dark),
+    inset -2px -2px 4px var(--shadow-light);
+}
+
+.input-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.input-section h3 i {
+    font-size: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+input, select {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.75rem;
+    background: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    box-shadow: inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input:focus, select:focus {
+    box-shadow: inset 6px 6px 12px var(--shadow-dark),
+    inset -6px -6px 12px var(--shadow-light),
+    0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+input::placeholder {
+    color: var(--text-color);
+    opacity: 0.6;
+}
+
+.calc-button, .reset-button {
+    width: 100%;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 1rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 6px 6px 12px var(--shadow-dark),
+    -6px -6px 12px var(--shadow-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.calc-button:hover, .reset-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+}
+
+.calc-button:active, .reset-button:active {
+    transform: translateY(0);
+    box-shadow: inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+}
+
+.result-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: inset 3px 3px 6px var(--shadow-dark),
+    inset -3px -3px 6px var(--shadow-light);
+    margin-top: 1rem;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(163, 177, 198, 0.1);
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-item.total {
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-top: 2px solid var(--accent-color);
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+}
+
+.result-label {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.result-value {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.budget-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.summary-item {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: inset 2px 2px 4px var(--shadow-dark),
+    inset -2px -2px 4px var(--shadow-light);
+}
+
+.summary-item.income {
+    background: rgba(72, 187, 120, 0.1);
+}
+
+.summary-item.expenses {
+    background: rgba(237, 137, 54, 0.1);
+}
+
+.summary-item.savings {
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.summary-item.remaining {
+    background: rgba(245, 101, 101, 0.1);
+}
+
+.summary-label {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+}
+
+.summary-value {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.summary-item.income .summary-value {
+    color: var(--success-color);
+}
+
+.summary-item.expenses .summary-value {
+    color: var(--warning-color);
+}
+
+.summary-item.savings .summary-value {
+    color: var(--accent-color);
+}
+
+.summary-item.remaining .summary-value {
+    color: var(--error-color);
+}
+
+.budget-breakdown {
+    margin-bottom: 2rem;
+}
+
+.budget-breakdown h4 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.expense-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(163, 177, 198, 0.1);
+}
+
+.expense-item:last-child {
+    border-bottom: none;
+}
+
+.financial-advice {
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background: rgba(102, 126, 234, 0.1);
+    border-left: 4px solid var(--accent-color);
+}
+
+.advice-item {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.advice-item:last-child {
+    margin-bottom: 0;
+}
+
+.advice-item.warning {
+    color: var(--warning-color);
+}
+
+.advice-item.success {
+    color: var(--success-color);
+}
+
+.advice-item.error {
+    color: var(--error-color);
+}
+
+.page-actions {
+    text-align: center;
+}
+
+.reset-button {
+    max-width: 300px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(245, 101, 101, 0.1) 0%, rgba(245, 101, 101, 0.05) 100%);
+    color: var(--error-color);
+}
+
+@media (max-width: 1200px) {
+    .calculators-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .budget-page {
+        padding: 1rem;
+    }
+
+    .calculator {
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .budget-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .calculators-grid {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator {
+        padding: 1rem;
+    }
+
+    .input-section {
+        padding: 1rem;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
